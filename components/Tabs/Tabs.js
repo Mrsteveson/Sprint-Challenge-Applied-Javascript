@@ -18,7 +18,7 @@ class TabLink {
     }
 
      // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
-    this.cards = Array.from(this.cards).map( tabCard => new TabCard(this.cards));
+    this.cards = Array.from(this.cards).map( tCard => new TabCard(this.cards));
 
     // Add a click event that invokes this.selectTab
     this.tabElement.addEventListener('click', () => this.selectTab());
@@ -30,18 +30,24 @@ class TabLink {
     const tabs = document.querySelectorAll('.tab');
     
     // Iterate through the NodeList removing the .active-tab class from each element
-    tabs.forEach(function(tabsClass){
-      tabsClass.classList.remove('active-tab');
-    });
+    // tabs.forEach(function(tabsClass){
+    //   tabsClass.classList.remove('active-tab');
+    // });
+    // <----------------------------------------------->
+    // Above same as below!
+    tabs.forEach(tabsClass => tabsClass.classList.remove('active-tab'));
 
     // Select all of the elements with the .card class on them
     const cards = document.querySelectorAll('.card');
 
     // Iterate through the NodeList setting the display style each one to 'none'
-    cards.forEach(function(cardList){
-      cardList.style.display = 'none';
-    });
-    
+    // cards.forEach(function(cardList){
+    //   cardList.style.display = 'none';
+    // });
+    // <----------------------------------------------->
+    // Above same as below!
+    cards.forEach(cardList => cardList.style.display = 'none');
+
     // Add a class of ".active-tab" to this.tabElement
     this.tabElement.classList.add('active-tab');
   
@@ -55,9 +61,10 @@ class TabCard {
     // Assign this.cardElement to the cardElement DOM reference
     this.cardElement = cardElement;
   }
+
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
-    // Syntax should be same same as line 49 I think.
+    // Syntax should be same same as line 55 probably.
     this.cardElement.forEach(card => card.style.display = 'flex');
   }
 
@@ -78,3 +85,4 @@ tabs.forEach(function(tLink){
   return new TabLink(tLink);
 });
 
+// tabs.forEach(tLink => new TabLink(tLink));
